@@ -30,9 +30,15 @@ public class Town {
     this.name = name;
   }
 
-  public void setResidents(int residents) {
-    this.residents = residents;
-  }
+public void setResidents(int residents) {
+  // variant: exception
+  if (residents < 0)
+    throw new IllegalArgumentException("residents must be equal or greater than 0: " + residents);
+  this.residents = residents;
+
+  // variant: min default value 0
+  //this.residents = (residents < 0) ? 0 : residents;
+}
 
   /** Returns the summarized information of the town. */
   public String getInfo() {
@@ -44,14 +50,4 @@ public class Town {
   public String toString() {
     return "Town('" + name + "', " + residents + ")";
   }
-
-  public void setResidents(int residents) {
-  // variant: exception
-  if (residents < 0)
-    throw new IllegalArgumentException("residents must be equal or greater than 0: " + residents);
-  this.residents = residents;
-
-  // variant: min default value 0
-  //this.residents = (residents < 0) ? 0 : residents;
-}
 }
