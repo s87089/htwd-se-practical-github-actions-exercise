@@ -45,4 +45,13 @@ public class Town {
     return "Town('" + name + "', " + residents + ")";
   }
 
+  public void setResidents(int residents) {
+  // variant: exception
+  if (residents < 0)
+    throw new IllegalArgumentException("residents must be equal or greater than 0: " + residents);
+  this.residents = residents;
+
+  // variant: min default value 0
+  //this.residents = (residents < 0) ? 0 : residents;
+}
 }
